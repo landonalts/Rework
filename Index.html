@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LanChat — Lobby & Global Chat with Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+    <h1>LanChat</h1>
+
+    <button id="adminBtn">Admin</button>
+
+    <div id="frontPage">
+        <input type="text" id="nameInput" class="input-field" placeholder="Enter your name (max 20 chars)" maxlength="20" autocomplete="off" />
+        <button id="proceedBtn" class="btn primary-btn">Proceed</button>
+    </div>
+
+    <div id="chatChoicePage" class="hidden">
+        <button id="createLobbyBtn" class="btn primary-btn">Create Lobby</button>
+        <input type="text" id="joinLobbyInput" class="input-field" placeholder="Enter lobby code (6 letters)" maxlength="6" autocomplete="off" style="text-transform: uppercase;" />
+        <button id="joinLobbyBtn" class="btn primary-btn">Join Lobby</button>
+        <button id="joinGlobalBtn" class="btn primary-btn">Join Global Chat</button>
+    </div>
+
+    <div id="lobbyPage" class="hidden" aria-live="polite">
+        <div id="lobbyHeader">
+            <div>Lobby Code: <span id="lobbyCode"></span></div>
+            <div id="playerCount">Players: 0</div>
+        </div>
+
+        <div id="chatTabs">
+            <div class="tabBtn active" data-chat="lobby">Lobby Chat</div>
+            <div class="tabBtn" data-chat="global">Global Chat</div>
+        </div>
+
+        <div id="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+        <div id="chatInput">
+            <input type="text" id="chatMessageInput" class="input-field" placeholder="Type your message..." maxlength="200" autocomplete="off" />
+            <button id="sendMessageBtn" class="btn primary-btn">Send</button>
+        </div>
+
+        <button id="leaveLobbyBtn" class="btn danger-btn">Leave Lobby</button>
+    </div>
+
+    <div id="globalPage" class="hidden" aria-live="polite">
+        <h2>Global Chat</h2>
+
+        <div id="globalMessages" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+        <div id="globalChatInput">
+            <input type="text" id="globalChatMessageInput" class="input-field" placeholder="Type your message..." maxlength="200" autocomplete="off" />
+            <button id="sendGlobalMessageBtn" class="btn primary-btn">Send</button>
+        </div>
+
+        <button id="leaveGlobalBtn" class="btn danger-btn">Leave Global Chat</button>
+    </div>
+
+</div>
+
+<div id="overlay">
+    <div id="loginModal">
+        <h2>Admin Login</h2>
+        <input type="text" id="username" class="input-field admin-input" placeholder="Username" autocomplete="off" />
+        <input type="password" id="password" class="input-field admin-input" placeholder="Password" autocomplete="off" />
+        <div id="errorMsg"></div>
+        <button id="loginBtn" class="btn admin-btn">Login</button>
+    </div>
+</div>
+
+<div id="adminGUI">
+    <button id="closeAdminBtn" class="btn admin-close-btn" title="Close Admin Panel">&times;</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
